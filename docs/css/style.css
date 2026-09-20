@@ -1,0 +1,558 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f3f5f8;
+  color: #1f2937;
+  font-family:
+    "Malgun Gothic",
+    "Noto Sans KR",
+    sans-serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* 상단 바 */
+
+.topbar {
+  height: 72px;
+  background: linear-gradient(100deg, #06366a, #135ba1);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 34px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logo-area h1 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.logo-area p {
+  margin: 3px 0 0;
+  font-size: 0.68rem;
+  opacity: 0.8;
+}
+
+.top-menu {
+  display: flex;
+  gap: 5px;
+}
+
+.top-menu-button {
+  border: 0;
+  background: transparent;
+  color: #e7f1ff;
+  padding: 11px 15px;
+  border-radius: 7px;
+}
+
+.top-menu-button:hover,
+.top-menu-button.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.mock-badge {
+  margin-left: auto;
+  border: 1px solid #8cc5ff;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 0.78rem;
+}
+
+/* 전체 화면 */
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 72px);
+}
+
+/* 왼쪽 메뉴 */
+
+.sidebar {
+  background: white;
+  border-right: 1px solid #dfe5ec;
+  padding: 26px 17px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 20px;
+  border-bottom: 1px solid #e1e6ed;
+}
+
+.profile-image {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8eef6;
+  color: #3f5268;
+  font-weight: bold;
+}
+
+.profile strong {
+  display: block;
+}
+
+.profile p {
+  margin: 4px 0 0;
+  color: #667085;
+  font-size: 0.78rem;
+}
+
+.side-menu {
+  display: grid;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.side-menu-button {
+  border: 0;
+  background: transparent;
+  color: #3d4857;
+  text-align: left;
+  padding: 13px 14px;
+  border-radius: 8px;
+}
+
+.side-menu-button:hover,
+.side-menu-button.active {
+  background: #eaf3fc;
+  color: #155a9e;
+  font-weight: bold;
+}
+
+.mock-notice {
+  margin-top: 30px;
+  padding: 14px;
+  border: 1px solid #ddd4f3;
+  border-radius: 10px;
+  background: #f4f0fb;
+  color: #584878;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.mock-notice p {
+  margin: 6px 0 0;
+}
+
+/* 본문 */
+
+.main-content {
+  max-width: 1450px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 34px 42px 70px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active-page {
+  display: block;
+}
+
+.breadcrumb {
+  margin: 0 0 14px;
+  color: #667085;
+  font-size: 0.85rem;
+}
+
+.page-title {
+  margin: 0 0 25px;
+  font-size: 1.55rem;
+}
+
+.page-title span {
+  color: #667085;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/* 강의 카드 */
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  overflow: hidden;
+  border: 1px solid #dfe5ec;
+  border-radius: 10px;
+  background: white;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(30, 50, 75, 0.14);
+}
+
+.course-banner {
+  height: 110px;
+  background-color: #6548a7;
+  background-image:
+    radial-gradient(
+      rgba(255, 255, 255, 0.22) 1px,
+      transparent 1px
+    );
+  background-size: 14px 14px;
+}
+
+.course-card-content {
+  padding: 18px;
+}
+
+.course-meta {
+  margin: 0 0 10px;
+  color: #667085;
+  font-size: 0.78rem;
+}
+
+.course-card h3 {
+  margin: 0 0 18px;
+  color: #252e3b;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.professor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #475467;
+  font-size: 0.88rem;
+}
+
+.professor span {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf0f5;
+  font-size: 0.76rem;
+}
+
+/* 강의 상세 */
+
+.back-button {
+  margin-bottom: 18px;
+  padding: 9px 13px;
+  border: 1px solid #ccd6e2;
+  border-radius: 7px;
+  background: white;
+  color: #344054;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 20px;
+  padding: 24px 27px;
+  border: 1px solid #dfe5ec;
+  border-radius: 10px;
+  background: white;
+}
+
+.course-code {
+  margin: 0;
+  color: #155a9e;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.course-header h2 {
+  margin: 7px 0 5px;
+  font-size: 1.45rem;
+}
+
+.course-header div > p:last-child {
+  margin: 0;
+  color: #667085;
+}
+
+.course-header > span {
+  padding: 8px 11px;
+  border-radius: 6px;
+  background: #edf5fc;
+  color: #285d8f;
+  font-size: 0.8rem;
+}
+
+.week-box {
+  overflow: hidden;
+  margin-bottom: 18px;
+  border: 1px solid #dfe5ec;
+  border-radius: 10px;
+  background: white;
+}
+
+.week-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 20px;
+  background: #fafbfd;
+}
+
+.week-title span {
+  color: #667085;
+  font-size: 0.82rem;
+}
+
+/* 과제, 동영상, 공지 항목 */
+
+.activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-top: 1px solid #edf0f4;
+  cursor: pointer;
+}
+
+.activity:hover {
+  background: #f8fbfe;
+}
+
+.activity-icon {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.assignment-icon {
+  background: #fff0f0;
+  color: #de3d3d;
+}
+
+.video-icon {
+  background: #eaf1ff;
+  color: #3166b0;
+}
+
+.notice-icon {
+  background: #fff6df;
+  color: #a66b00;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-type {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  background: #f0f2f5;
+  color: #5d6876;
+  font-size: 0.7rem;
+}
+
+.activity-content h3 {
+  margin: 2px 0 5px;
+  font-size: 0.98rem;
+}
+
+.activity-content > p:last-child {
+  margin: 0;
+  color: #667085;
+  font-size: 0.83rem;
+}
+
+.due-date {
+  color: #556170;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.deadline {
+  color: #c93636;
+}
+
+/* 과제 상세 */
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+}
+
+.detail-card {
+  padding: 28px;
+  border: 1px solid #dfe5ec;
+  border-radius: 10px;
+  background: white;
+}
+
+.detail-kind {
+  margin: 0;
+  color: #155a9e;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.detail-card h2 {
+  margin: 8px 0;
+  font-size: 1.5rem;
+}
+
+.detail-course {
+  margin: 0;
+  color: #667085;
+}
+
+.detail-description {
+  margin-top: 25px;
+  padding: 20px;
+  border-left: 4px solid #155a9e;
+  background: #f8fafc;
+  line-height: 1.7;
+}
+
+.detail-description h3 {
+  margin-top: 0;
+}
+
+.detail-description p {
+  margin-bottom: 0;
+}
+
+.submission-card {
+  overflow: hidden;
+  height: fit-content;
+  border: 1px solid #dfe5ec;
+  border-radius: 10px;
+  background: white;
+}
+
+.submission-card h3 {
+  margin: 0;
+  padding: 17px;
+  border-bottom: 1px solid #dfe5ec;
+  background: #f8fafc;
+  font-size: 1rem;
+}
+
+.submission-card div {
+  padding: 15px 17px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.submission-card div:last-child {
+  border-bottom: 0;
+}
+
+.submission-card span {
+  display: block;
+  margin-bottom: 6px;
+  color: #667085;
+  font-size: 0.78rem;
+}
+
+.submission-card strong {
+  font-size: 0.88rem;
+}
+
+/* 모바일 */
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 14px 18px;
+  }
+
+  .top-menu,
+  .mock-badge {
+    display: none;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-header {
+    display: block;
+  }
+
+  .course-header > span {
+    display: inline-block;
+    margin-top: 14px;
+  }
+
+  .week-title {
+    display: block;
+  }
+
+  .week-title span {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .due-date {
+    display: none;
+  }
+}
