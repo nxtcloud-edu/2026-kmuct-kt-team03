@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Mock eCampus</title>
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="logo-area">
+      <div class="logo-mark">M</div>
+
+      <div>
+        <h1>MOCK eCampus</h1>
+        <p>UNIVERSITY LEARNING SYSTEM</p>
+      </div>
+    </div>
+
+    <nav class="top-menu">
+      <button class="top-menu-button active">강의실</button>
+      <button class="top-menu-button">메시지</button>
+      <button class="top-menu-button">일정</button>
+    </nav>
+
+    <span class="mock-badge">시연용 사이트</span>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="profile-image">학</div>
+
+        <div>
+          <strong>테스트 학생</strong>
+          <p>2026학년도 2학기</p>
+        </div>
+      </div>
+
+      <nav class="side-menu">
+        <button class="side-menu-button active" id="home-button">
+          ▦ 교과 과정
+        </button>
+
+        <button class="side-menu-button">
+          ▣ 대시보드
+        </button>
+
+        <button class="side-menu-button">
+          ◷ 학습 일정
+        </button>
+
+        <button class="side-menu-button">
+          ⚙ 개인정보 수정
+        </button>
+      </nav>
+
+      <div class="mock-notice">
+        <strong>Mock 안내</strong>
+        <p>
+          AI Agent와 크롤러 시연을 위해 만든
+          가상 eCampus입니다.
+        </p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <!-- =========================
+           1. 메인 강의 목록 화면
+           ========================= -->
+      <section id="home-page" class="page active-page">
+        <p class="breadcrumb">홈 › 교과 과정</p>
+
+        <h2 class="page-title">
+          교과 과정
+          <span>5</span>
+        </h2>
+
+        <div class="course-grid">
+
+          <button
+            class="course-card"
+            data-course="microprocessor"
+          >
+            <div class="course-banner"></div>
+
+            <div class="course-card-content">
+              <p class="course-meta">
+                정규 강좌 · 2026 · 2학기
+              </p>
+
+              <h3>
+                마이크로프로세서
+                <br>
+                (0513504-01)
+              </h3>
+
+              <p class="professor">
+                <span>양</span>
+                양철괸 교수님
+              </p>
+            </div>
+          </button>
+
+          <button
+            class="course-card"
+            data-course="circuit"
+          >
+            <div class="course-banner"></div>
+
+            <div class="course-card-content">
+              <p class="course-meta">
+                정규 강좌 · 2026 · 2학기
+              </p>
+
+              <h3>
+                기초전자회로실험
+                <br>
+                (0061408-04)
+              </h3>
+
+              <p class="professor">
+                <span>정</span>
+                정경휸 교수님
+              </p>
+            </div>
+          </button>
+
+          <button
+            class="course-card"
+            data-course="history"
+          >
+            <div class="course-banner"></div>
+
+            <div class="course-card-content">
+              <p class="course-meta">
+                정규 강좌 · 2026 · 2학기
+              </p>
+
+              <h3>
+                세계역사의이해
+                <br>
+                (1135700-51)
+              </h3>
+
+              <p class="professor">
+                <span>고</span>
+                고재빽 교수님
+              </p>
+            </div>
+          </button>
+
+          <button
+            class="course-card"
+            data-course="signal"
+          >
+            <div class="course-banner"></div>
+
+            <div class="course-card-content">
+              <p class="course-meta">
+                정규 강좌 · 2026 · 2학기
+              </p>
+
+              <h3>
+                신호및시스템
+                <br>
+                (0591906-06)
+              </h3>
+
+              <p class="professor">
+                <span>양</span>
+                양철귄 교수님
+              </p>
+            </div>
+          </button>
+
+          <button
+            class="course-card"
+            data-course="datastructure"
+          >
+            <div class="course-banner"></div>
+
+            <div class="course-card-content">
+              <p class="course-meta">
+                정규 강좌 · 2026 · 2학기
+              </p>
+
+              <h3>
+                자료구조
+                <br>
+                (0712403-02)
+              </h3>
+
+              <p class="professor">
+                <span>이</span>
+                이성투 교수님
+              </p>
+            </div>
+          </button>
+
+        </div>
+      </section>
+
+      <!-- =========================
+           2. 마이크로프로세서
+           ========================= -->
+      <section id="microprocessor-page" class="page">
+        <button class="back-button">← 교과 과정으로 돌아가기</button>
+
+        <div class="course-header">
+          <div>
+            <p class="course-code">0513504-01</p>
+            <h2>마이크로프로세서</h2>
+            <p>양철괸 교수님</p>
+          </div>
+
+          <span>정규 강좌 · 2026 · 2학기</span>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>2주차</strong>
+            <span>9월 8일 - 9월 14일</span>
+          </div>
+
+          <article
+            class="activity modtype_xncommons"
+            data-type="video"
+            data-course="마이크로프로세서"
+            data-title="2주차 MCU와 메모리 구조"
+            data-description="ATmega128과 메모리 구조를 학습합니다."
+            data-deadline="2026-09-14 23:59"
+          >
+            <div class="activity-icon video-icon">▶</div>
+
+            <div class="activity-content">
+              <p class="activity-type">온라인 강의</p>
+              <h3>2주차 MCU와 메모리 구조</h3>
+              <p>재생시간 42:18</p>
+            </div>
+
+            <time class="due-date">
+              2026-09-08 00:00 ~<br>
+              2026-09-14 23:59
+            </time>
+          </article>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>3주차</strong>
+            <span>9월 15일 - 9월 21일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="마이크로프로세서"
+            data-title="3주차 과제"
+            data-description="ATmega128의 Flash, SRAM, EEPROM을 비교하여 PDF로 제출하세요."
+            data-deadline="2026-09-23 23:59"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>3주차 과제</h3>
+              <p>메모리 종류 비교 및 정리</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-16 00:00 ~<br>
+              2026-09-23 23:59
+            </time>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================
+           3. 기초전자회로실험
+           ========================= -->
+      <section id="circuit-page" class="page">
+        <button class="back-button">← 교과 과정으로 돌아가기</button>
+
+        <div class="course-header">
+          <div>
+            <p class="course-code">0061408-04</p>
+            <h2>기초전자회로실험</h2>
+            <p>정경휸 교수님</p>
+          </div>
+
+          <span>정규 강좌 · 2026 · 2학기</span>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>2주차</strong>
+            <span>9월 8일 - 9월 14일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="기초전자회로실험"
+            data-title="2주차 예비보고서"
+            data-description="저항과 가변저항 측정 실험의 예비보고서를 작성하세요."
+            data-deadline="2026-09-15 23:59"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>2주차 예비보고서</h3>
+              <p>저항 및 가변저항 측정</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-15 23:59
+            </time>
+          </article>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>3주차</strong>
+            <span>9월 15일 - 9월 21일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="기초전자회로실험"
+            data-title="3주차 보고서"
+            data-description="수업 시간에 안내된 전압과 전류 측정 실험 보고서를 제출하세요."
+            data-deadline="2026-09-23 00:00"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>3주차 보고서</h3>
+              <p>전류와 전압 측정 실험</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-23 00:00
+            </time>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================
+           4. 세계역사의이해
+           ========================= -->
+      <section id="history-page" class="page">
+        <button class="back-button">← 교과 과정으로 돌아가기</button>
+
+        <div class="course-header">
+          <div>
+            <p class="course-code">1135700-51</p>
+            <h2>세계역사의이해</h2>
+            <p>고재빽 교수님</p>
+          </div>
+
+          <span>정규 강좌 · 2026 · 2학기</span>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>1주차</strong>
+            <span>9월 1일 - 9월 7일</span>
+          </div>
+
+          <article
+            class="activity modtype_notice"
+            data-type="notice"
+            data-course="세계역사의이해"
+            data-title="수업 운영 및 평가 안내"
+            data-description="출석, 발표, 과제와 중간고사 평가 기준을 확인하세요."
+            data-deadline=""
+          >
+            <div class="activity-icon notice-icon">!</div>
+
+            <div class="activity-content">
+              <p class="activity-type">공지사항</p>
+              <h3>수업 운영 및 평가 안내</h3>
+              <p>평가 기준과 수업 진행 방식을 확인하세요.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>3주차</strong>
+            <span>9월 15일 - 9월 21일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="세계역사의이해"
+            data-title="답사 감상문 제출"
+            data-description="답사 후 느낀 점을 A4 한 장 분량으로 작성하여 제출하세요."
+            data-deadline="2026-09-28 23:59"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>답사 감상문 제출</h3>
+              <p>A4 1장 분량으로 작성</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-28 23:59
+            </time>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================
+           5. 신호및시스템
+           ========================= -->
+      <section id="signal-page" class="page">
+        <button class="back-button">← 교과 과정으로 돌아가기</button>
+
+        <div class="course-header">
+          <div>
+            <p class="course-code">0591906-06</p>
+            <h2>신호및시스템</h2>
+            <p>양철귄 교수님</p>
+          </div>
+
+          <span>정규 강좌 · 2026 · 2학기</span>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>2주차</strong>
+            <span>9월 8일 - 9월 14일</span>
+          </div>
+
+          <article
+            class="activity modtype_xncommons"
+            data-type="video"
+            data-course="신호및시스템"
+            data-title="2주차 연속시간 신호"
+            data-description="연속시간 신호의 정의와 기본 연산을 학습합니다."
+            data-deadline="2026-09-14 23:59"
+          >
+            <div class="activity-icon video-icon">▶</div>
+
+            <div class="activity-content">
+              <p class="activity-type">온라인 강의</p>
+              <h3>2주차 연속시간 신호</h3>
+              <p>재생시간 51:03</p>
+            </div>
+
+            <time class="due-date">
+              2026-09-14 23:59
+            </time>
+          </article>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>3주차</strong>
+            <span>9월 15일 - 9월 21일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="신호및시스템"
+            data-title="3주차 연습문제"
+            data-description="주기신호 판별 문제를 풀이하여 제출하세요."
+            data-deadline="2026-09-24 23:59"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>3주차 연습문제</h3>
+              <p>주기신호 판별 문제 풀이</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-24 23:59
+            </time>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================
+           6. 자료구조
+           ========================= -->
+      <section id="datastructure-page" class="page">
+        <button class="back-button">← 교과 과정으로 돌아가기</button>
+
+        <div class="course-header">
+          <div>
+            <p class="course-code">0712403-02</p>
+            <h2>자료구조</h2>
+            <p>이성투 교수님</p>
+          </div>
+
+          <span>정규 강좌 · 2026 · 2학기</span>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>2주차</strong>
+            <span>9월 8일 - 9월 14일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="자료구조"
+            data-title="시간복잡도 분석 과제"
+            data-description="세 함수의 시간복잡도를 Big-O 표기법으로 분석하여 제출하세요."
+            data-deadline="2026-09-17 23:59"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>시간복잡도 분석 과제</h3>
+              <p>Big-O 표기법 분석</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-17 23:59
+            </time>
+          </article>
+        </div>
+
+        <div class="week-box">
+          <div class="week-title">
+            <strong>3주차</strong>
+            <span>9월 15일 - 9월 21일</span>
+          </div>
+
+          <article
+            class="activity modtype_assign"
+            data-type="assignment"
+            data-course="자료구조"
+            data-title="스택 구현 과제"
+            data-description="배열을 이용해 push, pop, peek 기능을 가진 스택을 C언어로 구현하세요. 소스 코드와 실행 결과를 PDF로 제출합니다."
+            data-deadline="2026-09-25 23:59"
+          >
+            <div class="activity-icon assignment-icon">▤</div>
+
+            <div class="activity-content">
+              <p class="activity-type">과제</p>
+              <h3>스택 구현 과제</h3>
+              <p>C언어 배열 기반 스택 구현</p>
+            </div>
+
+            <time class="due-date deadline">
+              2026-09-25 23:59
+            </time>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================
+           7. 과제 상세 팝업
+           ========================= -->
+      <section id="detail-page" class="page">
+        <button class="back-button" id="detail-back-button">
+          ← 강의로 돌아가기
+        </button>
+
+        <div class="detail-layout">
+          <article class="detail-card">
+            <p class="detail-kind" id="detail-type">과제</p>
+
+            <h2 id="detail-title">과제 제목</h2>
+
+            <p class="detail-course" id="detail-course">
+              과목명
+            </p>
+
+            <div class="detail-description">
+              <h3>과제 내용</h3>
+
+              <p id="detail-description">
+                과제 설명
+              </p>
+            </div>
+          </article>
+
+          <aside class="submission-card">
+            <h3>제출 상황</h3>
+
+            <div>
+              <span>제출 여부</span>
+              <strong>미제출</strong>
+            </div>
+
+            <div>
+              <span>채점 상태</span>
+              <strong>채점되지 않음</strong>
+            </div>
+
+            <div>
+              <span>종료 일시</span>
+              <strong id="detail-deadline">마감일</strong>
+            </div>
+
+            <div>
+              <span>파일 제출</span>
+              <strong>PDF, ZIP 파일</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
