@@ -1,11 +1,22 @@
+
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 try:
+    # 다른 팀원이 from crawler import get_notices로 사용할 때
     from .mock_ecampus_crawler import get_mock_ecampus_notices
+    from .nccoss_notice_crawler import crawl_nccoss_notices
+    from .cieek_notice_crawler import crawl_cieek_notices
+    from .kmu_cts_notice_crawler import crawl_kmu_cts_notices
+
 except ImportError:
+    # python crawler/crawler.py로 직접 실행할 때
     from mock_ecampus_crawler import get_mock_ecampus_notices
+    from nccoss_notice_crawler import crawl_nccoss_notices
+    from cieek_notice_crawler import crawl_cieek_notices
+    from kmu_cts_notice_crawler import crawl_kmu_cts_notices
+
 
 
 EE_NOTICE_URL = "https://ee.kookmin.ac.kr/community/board/notice/"
@@ -114,48 +125,106 @@ def crawl_ee_notices():
             continue
 
     return notices
+def normalize_title(title):
+    """제목을 비교하기 쉽게 정리한다."""
+    return "".join(
+        character.lower()
+        for character in (title or "")
+        if character.isalnum()
+    )
 
+def remove_duplicates(notices):
+    """정리된 제목이 같은 공지를 제거한다."""
+    unique_notices = []
+    seen_titles = set()
+
+    for notice in notices:
+        title_key = normalize_title(
+            notice.get("title", "")
+        )
+
+        if title_key and title_key in seen_titles:
+            continue
+
+        unique_notices.append(notice)
+
+        if title_key:
+            seen_titles.add(title_key)
+
+    return unique_notices
 
 def get_notices(user: dict) -> list[dict]:
     """
-    국민대학교 전자공학부 공지와
-    Mock eCampus 과제·공지를 함께 반환한다.
+    국민대학교 공개 홈페이지와 Mock eCampus에서
+    공지 및 과제 정보를 수집한다.
     """
-    school = str(user.get("school", "")).strip()
-    major = str(user.get("major", "")).strip()
+    school = str(
+        user.get("school", "")
+    ).strip()
+
+    major = str(
+        user.get("major", "")
+    ).strip()
 
     if "국민" not in school:
         return []
 
     results = []
 
-    # 전자공학 계열이면 전자공학부 공지를 수집한다.
+    # 전자공학부 공지
     if not major or "전자" in major:
-        results.extend(crawl_ee_notices())
+        try:
+            results.extend(
+                crawl_ee_notices()
+            )
+        except Exception as error:
+            print(
+                f"[전자공학부 전체 수집 실패] "
+                f"{error}"
+            )
 
-    # Mock eCampus 과제와 공지를 수집한다.
-    results.extend(get_mock_ecampus_notices())
+    # 차세대통신사업단 공지
+    try:
+        results.extend(
+            crawl_nccoss_notices()
+        )
+    except Exception as error:
+        print(
+            f"[차세대통신사업단 전체 수집 실패] "
+            f"{error}"
+        )
 
-    return results
+    # 공학교육혁신센터 공지
+    try:
+        results.extend(
+            crawl_cieek_notices()
+        )
+    except Exception as error:
+        print(
+            f"[공학교육혁신센터 전체 수집 실패] "
+            f"{error}"
+        )
 
+    # 미래융합대학 공지
+    try:
+        results.extend(
+            crawl_kmu_cts_notices()
+        )
+    except Exception as error:
+        print(
+            f"[미래융합대학 전체 수집 실패] "
+            f"{error}"
+        )
 
-if __name__ == "__main__":
-    test_user = {
-        "school": "국민대학교",
-        "major": "전자공학부",
-        "grade": 2,
-        "activities": [],
-        "interests": [],
-        "custom_interests": []
-    }
+    # Mock eCampus 과제 및 공지
+    try:
+        results.extend(
+            get_mock_ecampus_notices()
+        )
+    except Exception as error:
+        print(
+            f"[Mock eCampus 전체 수집 실패] "
+            f"{error}"
+        )
 
-    notices = get_notices(test_user)
-
-    print(f"\n수집한 공지 개수: {len(notices)}개\n")
-
-    for notice in notices:
-        print(f"제목: {notice['title']}")
-        print(f"날짜: {notice['date']}")
-        print(f"출처: {notice['source']}")
-        print(f"링크: {notice['url']}")
-        print("-" * 60)
+    return remove_duplicates(results)
