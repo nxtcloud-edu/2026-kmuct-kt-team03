@@ -1,43 +1,83 @@
 import datetime
 
 def remove_duplicates(notices):
+
     if not notices or not isinstance(notices, list):
         return []
-    
+
     seen_keys = set()
     unique_notices = []
-    
+
     for notice in notices:
+
         if not isinstance(notice, dict):
             continue
-            
-        url = notice.get("url", "").strip()
-        title = notice.get("title", "").strip()
-        
-        unique_key = url if url else title
-        if not unique_key:
+
+        url = str(
+            notice.get("url", "")
+        ).strip()
+
+        title = str(
+            notice.get("title", "")
+        ).strip()
+
+        if not title:
             continue
-            
-        if unique_key not in seen_keys:
-            seen_keys.add(unique_key)
-            unique_notices.append(notice)
-            
+
+        # URL만 비교하면 Mock eCampus 항목들이
+        # 전부 같은 URL이라 하나로 합쳐지므로
+        # URL + 제목 조합으로 중복 판단
+        unique_key = (
+            url,
+            title
+        )
+
+        if unique_key in seen_keys:
+            continue
+
+        seen_keys.add(unique_key)
+        unique_notices.append(notice)
+
     return unique_notices
 
-
 def filter_notices(notices, min_relevance=50):
+
     filtered_notices = []
-    
+
     for notice in notices:
-        relevance = notice.get("relevance")
-        if not isinstance(relevance, (int, float)):
+
+        # Mock eCampus 과제는
+        # 사용자의 실제 과제로 간주하므로 무조건 유지
+        source = str(
+            notice.get("source", "")
+        )
+
+        category = str(
+            notice.get("category", "")
+        ).strip()
+
+        if (
+            source == "Mock eCampus 과제"
+            or category == "과제"
+        ):
+            filtered_notices.append(notice)
+            continue
+
+        relevance = notice.get(
+            "relevance",
+            0
+        )
+
+        if not isinstance(
+            relevance,
+            (int, float)
+        ):
             relevance = 0
-            
+
         if relevance >= min_relevance:
             filtered_notices.append(notice)
-            
-    return filtered_notices
 
+    return filtered_notices
 
 def calculate_dday(deadline_str):
     if not deadline_str or str(deadline_str).strip() == "미정":

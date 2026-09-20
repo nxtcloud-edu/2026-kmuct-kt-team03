@@ -82,7 +82,7 @@ def apply_styles():
         .notice-meta {
             font-size: 14px;
             color: #69766e;
-            margin-bottom: 7px;
+            margin-bottom: 7px;category
         }
 
         .notice-summary {
@@ -704,42 +704,37 @@ def show_results(results):
     if st.session_state.page == "category":
 
         st.markdown(
-            '<div class="service-title">ALL챙이</div>',
+            '<div class="service-title">어떤 정보를 확인할까요?</div>',
             unsafe_allow_html=True
         )
 
-        st.markdown(
-            """
-            <div class="service-subtitle">
-                어떤 정보를 확인할까요?
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+    st.markdown(
+        """
+        <div class="service-subtitle">
+        원하는 정보 유형을 선택하면 맞춤 결과를 보여드립니다.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
+    col1, col2 = st.columns(2, gap="large")
 
-        col1, col2 = st.columns(2)
-
-
-        with col1:
+    with col1:
+        with st.container(border=True):
 
             st.markdown(
                 """
-                <div class="choice-card">
+                <div class="choice-icon">
+                    📚
+                </div>
 
-                    <div class="choice-icon">
-                        📚
-                    </div>
+                <div class="choice-title">
+                    과제
+                </div>
 
-                    <div class="choice-title">
-                        과제
-                    </div>
-
-                    <div class="choice-description">
-                        마감이 가까운 과제부터<br>
-                        중요한 과제를 한눈에 확인해요.
-                    </div>
-
+                <div class="choice-description">
+                    마감이 가까운 과제부터<br>
+                    중요한 과제를 한눈에 확인해요.
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -747,34 +742,29 @@ def show_results(results):
 
             if st.button(
                 "과제 확인하기",
+                key="assignment_button",
                 use_container_width=True
             ):
-
-                st.session_state.result_type = "assignment"
+                st.session_state.result_type = "과제"
                 st.session_state.page = "results"
-
                 st.rerun()
 
-
-        with col2:
+    with col2:
+        with st.container(border=True):
 
             st.markdown(
                 """
-                <div class="choice-card">
+                <div class="choice-icon">
+                    📢
+                </div>
 
-                    <div class="choice-icon">
-                        📢
-                    </div>
+                <div class="choice-title">
+                    공지
+                </div>
 
-                    <div class="choice-title">
-                        공지
-                    </div>
-
-                    <div class="choice-description">
-                        장학금, 인턴, 공모전 등<br>
-                        나에게 필요한 정보를 확인해요.
-                    </div>
-
+                <div class="choice-description">
+                    장학금, 인턴, 공모전 등<br>
+                    나에게 필요한 정보를 확인해요.
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -782,29 +772,20 @@ def show_results(results):
 
             if st.button(
                 "공지 확인하기",
+                key="notice_button",
                 use_container_width=True
             ):
-
-                st.session_state.result_type = "notice"
+                st.session_state.result_type = "공지"
                 st.session_state.page = "results"
-
                 st.rerun()
 
+    st.write("")
 
-        st.write("")
+    if st.button("← 검색 조건 수정"):
+        st.session_state.page = "input"
+        st.rerun()
 
-
-        if st.button(
-            "← 검색 조건 수정",
-            use_container_width=True
-        ):
-
-            st.session_state.page = "input"
-
-            st.rerun()
-
-
-        return
+    return
 
 
     # =====================================================

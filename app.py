@@ -18,7 +18,30 @@ if st.session_state.get("user_data"):
         with st.spinner("AI Agent가 정보를 찾고 분석하고 있습니다..."):
 
             raw_notices = get_notices(user)
-            raw_notices = raw_notices[:10]
+
+            # 공개 공지와 Mock eCampus 데이터를 분리
+            mock_notices = [
+                notice
+                for notice in raw_notices
+                if str(
+                    notice.get("source", "")
+                ).startswith("Mock eCampus")
+            ]
+
+            public_notices = [
+                notice
+                for notice in raw_notices
+                if not str(
+                    notice.get("source", "")
+                ).startswith("Mock eCampus")
+            ]
+
+            # API 호출 수는 제한하되
+            # Mock eCampus 과제는 반드시 포함
+            raw_notices = (
+                public_notices[:5]
+                + mock_notices
+            )
 
             analyzed_notices = []
 
