@@ -743,7 +743,7 @@ def show_results(results):
             if st.button(
                 "과제 확인하기",
                 key="assignment_button",
-                use_container_width=True
+                width="stretch"
             ):
                 st.session_state.result_type = "과제"
                 st.session_state.page = "results"
@@ -773,7 +773,7 @@ def show_results(results):
             if st.button(
                 "공지 확인하기",
                 key="notice_button",
-                use_container_width=True
+                width="stretch"
             ):
                 st.session_state.result_type = "공지"
                 st.session_state.page = "results"

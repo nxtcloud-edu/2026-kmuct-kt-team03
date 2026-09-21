@@ -51,6 +51,47 @@ def make_fallback_result(notice):
     if not isinstance(notice, dict):
         notice = {}
 
+    content = str(
+        notice.get("content", "")
+        or ""
+    ).strip()
+
+    # Gemini가 실패해도 긴 원문 전체를
+    # 화면에 그대로 보여주지 않도록 짧게 자름
+    if len(content) > 220:
+        fallback_summary = (
+            content[:220].strip()
+            + "..."
+        )
+    else:
+        fallback_summary = content
+
+    if not fallback_summary:
+        fallback_summary = (
+            "원문에서 세부 내용을 확인해주세요."
+        )
+
+    return {
+        "title": notice.get("title", ""),
+        "url": notice.get("url", ""),
+        "date": notice.get("date"),
+        "content": content,
+        "source": notice.get("source", ""),
+
+        "category": "기타",
+        "deadline": None,
+        "target": "",
+        "summary": fallback_summary,
+        "action": "원문 확인",
+        "relevance": 0,
+        "reason": "",
+
+        "analysis_failed": True
+    }   
+
+    if not isinstance(notice, dict):
+        notice = {}
+
     return {
         "title": notice.get("title", ""),
         "url": notice.get("url", ""),
