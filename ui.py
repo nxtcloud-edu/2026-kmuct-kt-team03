@@ -1174,4 +1174,3 @@ def show_results(results):
         ):
             go_to_input()
             st.rerun()
-
